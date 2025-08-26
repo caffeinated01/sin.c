@@ -60,7 +60,8 @@ int main(int argc, char **argv) {
     printf("\x1b[H"); // move cursor to top left
 
     for (int i = 0; i < screen_width * screen_height; i++) {
-      putchar(i % screen_width == 0 ? '\n' : buffer[i]); // wrap to next line
+      // wrap to next line if on edge, else print out char
+      putchar(i % screen_width == 0 ? '\n' : buffer[i]);
     }
 
     offset += speed;
